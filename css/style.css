@@ -1,0 +1,307 @@
+:root {
+    --yellow: hsl(50, 99%, 62%);
+    --black:  #000000;
+    --dark:   #404040;
+    --white:    #FFF;
+
+    --h1: 3rem;
+    --h2: 1.8rem;
+    --body: 1.6rem;
+    --intro: 1.6rem;
+    --btn: 1.4rem;
+}
+
+@media (min-width: 700px) {
+    :root {
+        --h1: 4rem;
+        --h2: 1.8rem;
+        --body: 1.8rem;
+        --intro: 1.8rem;
+        --btn: 1.4rem;
+    }
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: var(--body);
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--dark);
+}
+
+/* typography */
+ul[class], ol[class] {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    color: #000;
+}
+
+h1, h2, h3 {
+    line-height: 1.1;
+}
+
+h1 {
+    font-size: var(--h1);
+}
+
+h2 {
+    font-size: var(--h2);
+}
+
+h1, h2, strong {
+    font-weight: 700;
+}
+
+.btn {
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 700;
+    padding: .25em 1.5em;
+    justify-self: start;
+    margin-top: 1em;
+}
+
+.btn-color {
+    color: rgb(0 0 0 / .7);
+    background-color: var(--yellow);
+
+}
+
+.text-center {
+    text-align: center;
+}
+
+/* grid */
+
+.main-grid {
+    display: grid;
+    grid-template-columns: minmax(1rem, 1fr) minmax(0px, 500px) minmax(1rem, 1fr);
+}
+
+/* header */
+header {
+    background-color: #000;
+}
+
+header > * {
+    grid-column: 2;
+    justify-self: start;
+}
+
+.logo-link {
+    background-color: var(--yellow);
+    display: grid;
+}
+
+
+.nav {
+    position: absolute;
+    background-color: var(--black);
+    left: 0;
+    right: 0;
+    top: -100%;
+    transform: translateY(0);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    transition: transform 500ms ease-out;
+}
+
+.nav a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.nav a:focus,
+.nav a:hover {
+    opacity: .5;
+    border-bottom: 1px solid #fff;
+    padding-bottom: .25rem;
+}
+
+.disable {
+    transform: translateY(100%);
+}
+
+.nav-switch {
+    transform: scale(2);
+    position: absolute;
+    margin: 0;
+    top: 1rem;
+    right: 1rem;
+    color: red;
+}
+
+
+
+/* hero */
+.hero {
+    background-image: url(../img/hero-bg.jpg);
+    color: #fff;
+    padding: 4rem 0;
+}
+
+.hero h1,
+.hero p,
+.hero a  {
+    margin: 0;
+}
+
+.hero > * + * {
+    margin-top: 1em !important;
+}
+
+.hero > * {
+    grid-column: 2;
+}
+
+.hero span {
+    color: var(--yellow);
+}
+
+/* info */
+.info {
+    gap: 3rem 0;
+    padding: 4rem 0;
+}
+
+.col {
+    grid-column: 2/ span 1;
+}
+
+.info h2 {
+    color:var(--black);
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.info span {
+    font-weight: 700;
+}
+
+/* footer */
+footer {
+    background-color: #ebebeb;
+    padding: 4rem 0;
+    gap: 2rem;
+    grid-template-areas: 
+    ". socials ."
+    ". main .";
+}
+
+.footer-main {
+    grid-area: main;
+    text-align: center;
+}
+
+.footer-main > * {
+    opacity: .5;
+}
+
+.socials {
+    grid-area: socials;
+    justify-self: center;
+    display: flex;
+    gap: 2em;
+    font-size: 2rem;
+}
+
+.socials a {
+    opacity: .5;
+    transition: opacity 100ms;
+}
+
+.socials a:focus,
+.socials a:hover {
+    opacity: 1;
+}
+
+@media (min-width: 700px) {
+    .main-grid {
+        grid-template-columns: minmax(2rem, 1fr) repeat(3, minmax(200px, 350px)) minmax(2rem, 1fr);
+    }
+
+    .disable {
+        transform: none;
+    }
+
+    .header-content {
+        display: flex;
+        gap: 1em;
+        grid-column: 2 / -2;
+    }
+
+    .nav-switch {
+        display: none;
+    }
+
+    .logo-link {
+        align-items: end;
+    }
+
+    .nav {
+        padding: 1rem 0 !important;
+        position: static;
+        flex-direction: row;
+        gap: 2em;
+    }
+
+    .hero {
+        background-size: cover;
+        background-position: center;
+        padding: 6rem 0;
+    }
+
+    .hero > * + * {
+        margin-top: 2em !important;
+    }
+
+    .hero > * {
+        grid-column: 2 / span 2;
+    }
+
+    .info {
+        gap: 2rem;
+    }
+
+    .col:first-child {
+        grid-column: 2;
+    }
+    
+    .col {
+        grid-column: span 1;
+    }
+
+
+    footer {
+        gap: 0;
+        grid-template-areas: 
+        ". main main socials .";
+    }
+
+    .footer-main {
+        text-align: left;
+    }
+
+    .socials {
+        align-self: center;
+        
+    }
+}
+
+
